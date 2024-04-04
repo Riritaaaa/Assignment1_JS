@@ -55,7 +55,7 @@ async function main() {
                     console.log(`ไม่พบสินค้าในตะกร้า`);
                 }
             } else {
-                console.log(`ไม่พบสินค้าในตะกร้า`);
+                console.log(`คำสั่งไม่ถูกต้อง`);
             }
 
         } else if(input === 'แสดงสินค้าในตะกร้า'){
@@ -100,6 +100,8 @@ function removeFromCart(product) {
         if (cart[index].amount === 0) {
             cart.splice(index, 1);
         }
+    }else {
+        console.log(`ไม่พบสินค้าในตะกร้า`);
     }
 }
 
