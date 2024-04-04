@@ -5,7 +5,6 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-
 const data = require("./data.json");
 const cart = [];
 
@@ -51,8 +50,6 @@ async function main() {
                 const productId = parts[1]; 
                 const product = data.find(item => item.product_id === productId);
                 if (product) {
-                    product.balance++;
-                    console.log(`ลบ ${product.name} สำเร็จ`);
                     removeFromCart(product);
                 } else {
                     console.log(`ไม่พบสินค้าในตะกร้า`);
@@ -78,7 +75,6 @@ function askQuestion(question) {
     });
 }
 
-
 function addToCart(product) {
     const index = cart.findIndex(item => item.name === product.name);
     if (index !== -1) {
@@ -97,6 +93,8 @@ function addToCart(product) {
 function removeFromCart(product) {
     const index = cart.findIndex(item => item.name === product.name);
     if (index !== -1) {
+        product.balance++;
+        console.log(`ลบ ${product.name} สำเร็จ`);
         cart[index].amount--;
         cart[index].all_price -= product.price;
         if (cart[index].amount === 0) {
